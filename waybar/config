@@ -1,27 +1,56 @@
 {
     "layer": "top",
-    "width": 1080,
+    "width": 1440,
     "margin-top": 10,
     "margin-bottom": 0,
 
     // Modules layout
-    "modules-left": ["custom/launcher","cpu","memory","disk"],
+    "modules-left": ["custom/launcher", "cpu", "memory", "disk", "custom/uptime", "custom/media"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["network","bluetooth","pulseaudio","battery","clock","custom/power"],
+    "modules-right": [ "network", "bluetooth", "pulseaudio", "battery", "clock", "custom/updated", "custom/power"],
 
-    "pulseaudio": {
-        "tooltip": false,
-        "scroll-step": 5,
-        "format": "{icon} {volume}%",
-        "format-muted": "{icon} {volume}%",
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "custom/launcher": {
+        "format": " ",
+        "on-click": "rofi -show drun",
+        "on-click-right": "killall rofi"
+    },
+
+    "cpu": {
+        "interval": 15,
+        "format": "<span color='#f7768e'> </span> {}%",
+        "max-length": 10
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "<span color='#7dcfff'> </span> {used}GiB",
+        "max-length": 10
+    },
+
+    "disk": {
+        "format": "<span color='#e0af68'> </span> {used}",
+        "interval": 1
+    },
+
+    "custom/uptime": {
+        "format": "󱫋 {}",
+        "interval": 60,
+        "exec": "uptime -p | tr -d ',' | sed 's/up //g'",
+        "tooltip": false
+    },
+
+    "custom/media": {
+        "interval": 30,
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 20,
         "format-icons": {
-            "default": [
-                "<span color='#7aa2f7'> </span>",
-                "<span color='#7aa2f7'> </span>",
-                "<span color='#7aa2f7'> </span>"
-            ]
-        }
+            "spotify": " ",
+            "default": " "
+        },
+        "escape": true,
+        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl play-pause"
     },
 
     "hyprland/workspaces": {
@@ -40,21 +69,40 @@
         }
     },
 
-    // BLUETOOTH (ADAPTADO)
-    "bluetooth": {
-    "format-on": "<span color='#9ece6a'>󰂯</span>",
-    "format-off": "<span color='#f7768e'>󰂲</span>",
-    "format-connected": "<span color='#7dcfff'>󰂱</span> {num_connections}",
-    "tooltip-format-connected": "{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "$HOME/.config/system_scripts/wofi-bluetooth.sh"
-},
-
     "network": {
+        "interval": 5,
+        "tooltip": true,
+
+        "format-wifi": "<span color='#9ece6a'></span> {essid} ({signalStrength}%)",
+        "format-ethernet": "<span color='#7dcfff'>󰈀</span> {ifname}",
+        "format-disconnected": "<span color='#f7768e'>󰤭</span> Offline",
+
+        "tooltip-format": "Interface: {ifname}\\nIP: {ipaddr}\\nSSID: {essid}\\nSinal: {signalStrength}%"
+    },
+    
+    // Adapted from: https://github.com/cephi-sui/dotfiles/blob/eea29a853cd272594785487add91fe5cee8f9d15/.config/waybar/config#L167
+    "bluetooth": {
+        "format-on": "<span color='#9ece6a'>󰂯</span>",
+        "format-off": "<span color='#f7768e'>󰂲</span>",
+        "format-connected": "<span color='#7dcfff'>󰂱</span> {num_connections}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "$HOME/.config/system_scripts/wofi-bluetooth.sh"
+    },
+    
+    "pulseaudio": {
         "tooltip": false,
-        "format-wifi": "<span color='#9ece6a'> </span> {bandwidthDownBits}",
-        "format-ethernet": "",
-        "interval": 30
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-muted": "{icon} {volume}%",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "format-icons": {
+            "default": [
+                "<span color='#7aa2f7'> </span>",
+                "<span color='#7aa2f7'> </span>",
+                "<span color='#7aa2f7'> </span>"
+            ]
+        }
     },
 
     "backlight": {
@@ -71,6 +119,7 @@
             "warning": 30,
             "critical": 10
         },
+
         "format": "{icon}  <span color='#F1F1F1'>{capacity}%</span>",
         "format-charging": "<span color='#9ece6a'></span> <span color='#F1F1F1'>{capacity}%</span>",
         "format-plugged": " <span color='#F1F1F1'>{capacity}%</span>",
@@ -84,60 +133,18 @@
         ]
     },
 
-    "clock": {
-        "tooltip": true,
-        "interval": 60,
-        "format": "{:%H:%M}",
-        "tooltip-format": "{:%Y-%m-%d}"
-    },
-
-    "cpu": {
-        "interval": 15,
-        "format": "<span color='#f7768e'> </span> {}%",
-        "max-length": 10
-    },
-
-    "disk": {
-        "format": "<span color='#e0af68'> </span> {used}",
-        "interval": 1
-    },
-
-    "memory": {
-        "interval": 30,
-        "format": "<span color='#7dcfff'> </span> {used}GiB",
-        "max-length": 10
-    },
-
-    "custom/media": {
-        "interval": 30,
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 20,
-        "format-icons": {
-            "spotify": " ",
-            "default": " "
-        },
-        "escape": true,
-        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
-        "on-click": "playerctl play-pause"
-    },
-
-    "custom/launcher": {
-        "format": " ",
-        "on-click": "rofi -show drun",
-        "on-click-right": "killall rofi"
-    },
-
-    "custom/power": {
-        "format": "<span color='#f7768e'>⏻</span>",
-        "on-click": "wlogout"
-    },
-
     "custom/updates": {
         "format": "{} Update(s)",
         "exec": "checkupdates | wc -l",
         "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
         "interval": 15,
         "on-click": "alacritty -e paru -Syu && notify-send 'The system has been updated'"
+    },
+
+    "clock": {
+        "tooltip": true,
+        "interval": 60,
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%Y-%m-%d}"
     }
 }
