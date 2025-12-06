@@ -4,3 +4,7 @@ no_actions=false
 term=kitty
 mode=drun
 --show
+
+[colors]
+highlight-background=rgba(217,181,120,0.35)
+highlight-foreground=#3A3A3A
