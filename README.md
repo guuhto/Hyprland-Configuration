@@ -3,7 +3,7 @@ A clean and optimized Hyprland setup focused on simplicity, smooth visuals, and 
 
 **All configuration was done on Arch, btw.**
 
-# Instalação inicial do Hyprland
+# Initial installation of Hyprland
 
 **Installation**
 ```bash
