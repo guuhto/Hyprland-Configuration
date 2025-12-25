@@ -7,7 +7,7 @@ A clean and optimized Hyprland setup focused on simplicity, smooth visuals, and 
 
 **Installation**
 ```bash
-sudo pacman -S hyprland waybar wofi
+sudo pacman -S hyprland waybar rofi-wayland
 ```
 # CAVA
 No modifications, no plugins, just CAVA.
