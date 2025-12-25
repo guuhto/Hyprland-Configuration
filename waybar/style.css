@@ -3,11 +3,10 @@
     border-radius: 10px;
     font-family: "FiraCode Nerd Font", monospace;
     font-size: 15px;
-    min-height: 10px;
 }
 
 window#waybar {
-    background-color: rgba(212, 220, 226, 0.45);
+    background-color: rgba(15, 15, 18, 0.65);
     border-radius: 15px;
     margin-top: 6px;
 }
@@ -15,34 +14,34 @@ window#waybar {
 #workspaces {
     margin: 6px;
     border-radius: 18px;
-    background: rgba(215, 215, 200, 0.25);
+    background: rgba(30, 30, 35, 0.75);
     padding-left: 12px;
     padding-right: 6px;
 }
 
 #workspaces button {
     transition: none;
-    color: #7A8BA0; 
+    color: #7A7F8C;
     background: transparent;
     margin-right: 10px;
 }
 
 #workspaces button.empty {
-    color: #C06A5A; 
+    color: #3A3A3A;
     font-size: 2px;
 }
 
 #workspaces button.persistent {
-    color: #7A8BA0;
+    color: #7A7F8C;
     font-size: 4px;
 }
 
 #workspaces button.active {
-    color: #D9B578;
+    color: #E03A3A;
     font-size: 4px;
 }
 
-#network, #pulseaudio, #battery, #clock, #memory, #disk, #cpu, #bluetooth {
+#cpu, #memory, #disk, #custom-launcher, #uptime, #network, #bluetooth, #pulseaudio, #battery, #clock{
     margin-top: 6px;
     margin-left: 8px;
     padding-left: 10px;
@@ -51,20 +50,19 @@ window#waybar {
     border-radius: 18px;
     font-size: 14px;
     font-weight: bold;
-    transition: none;
-    color: #545454; 
-    background: rgba(215, 215, 200, 0.25); 
+    color: #B8BCC6;
+    background: rgba(30, 30, 35, 0.75);
 }
 
 #battery.charging,
 #battery.plugged {
-    color: #545454;
+    color: #B8BCC6;
     background-color: transparent;
 }
 
 #battery.critical:not(.charging) {
-    background-color: #DCA3A1; 
-    color: #545454;
+    background-color: #C92424;
+    color: white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
@@ -72,7 +70,7 @@ window#waybar {
 
 @keyframes blink {
     to {
-        color: #DCA3A1;
+        color: #C92424;
     }
 }
 
@@ -82,7 +80,7 @@ window#waybar {
     padding-left: 10px;
     padding-right: 5px;
     border-radius: 10px;
-    color: #C06A5A; 
+    color: #C92424;
     background: transparent;
 }
 
@@ -95,7 +93,7 @@ window#waybar {
     border-radius: 18px;
     font-size: 14px;
     font-weight: bold;
-    color: #545454;
+    color: #B8BCC6;
     background: transparent;
 }
 
@@ -105,8 +103,8 @@ window#waybar {
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;
-    color: #545454;
-    background: #D9B578;
+    color: #FFFFFF;
+    background: #C92424;
 }
 
 #custom-media {
@@ -115,6 +113,20 @@ window#waybar {
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 10px;
-    color: #545454;
-    background: #DCA3A1; 
+    color: #FFFFFF;
+    background: rgba(201, 36, 36, 0.75);
+}
+
+#custom-uptime,
+.uptime-module {
+    margin-top: 6px;
+    margin-left: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 6px;
+    border-radius: 18px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #B8BCC6;
+    background: rgba(30, 30, 35, 0.75);
 }
