@@ -1,12 +1,12 @@
 configuration {
-	modi:                       "drun,run,window,ssh,filebrowser";
+	modi:                       "drun,run,window,filebrowser,ssh";
     show-icons:                 true;
 
     display-drun:               " ";
     display-run:                " ";
     display-window:             " ";
-    display-ssh:                " ";
     display-filebrowser:        " ";
+    display-ssh:                " ";
 
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
@@ -42,7 +42,6 @@ configuration {
 }
 
 window {
-    /* properties for window widget */
     transparency:                "real";
     location:                    center;
     anchor:                      center;
