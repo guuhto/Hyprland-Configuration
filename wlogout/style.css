@@ -4,14 +4,14 @@
 }
 
 window {
-    background-color: rgba(20, 0, 0, 0.9); /* fundo quase preto com toque vermelho */
+    background-color: rgba(20, 0, 0, 0.9);
 }
 
 button {
     border-radius: 0;
-    border-color: #880000; /* borda vermelha escura */
-    color: #FFFFFF; /* texto branco */
-    background-color: #1B1B1B; /* fundo escuro neutro */
+    border-color: #880000;
+    color: #FFFFFF; 
+    background-color: #1B1B1B; 
     border-style: solid;
     border-width: 1px;
     background-repeat: no-repeat;
@@ -22,7 +22,7 @@ button {
 button:focus,
 button:active,
 button:hover {
-    background-color: #FF5555; /* vermelho Tokyo Night Red */
+    background-color: #FF5555; 
     outline-style: none;
 }
 
@@ -49,4 +49,3 @@ button:hover {
 #logout {
     background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
 }
-
