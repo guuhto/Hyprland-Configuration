@@ -19,6 +19,11 @@ Use the version above of: fastfetch 2.55.1-23-debug (x86_64)
 Install the -git version (or the latest available version) via AUR:
 ```bash
 yay -S fastfetch-git
+sudo pacman -S imagemagick
+```
+or
+```bash
+sudo pacman -S fastfetch imagemagick
 ```
 # GTK Themes and Fonts I use:
 
