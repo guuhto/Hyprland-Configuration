@@ -63,6 +63,19 @@ sudo pacman -S nwg-look
 ```bash
 yay -S qt5ct-kde qt6ct-kde
 ```
+# swww and mpvpaper (Wallpapers)
+
+**Installation**
+```bash
+sudo pacman -S swww
+```
+```bash
+yay -S mpvpaper
+```
+**Installation**
+```bash
+yay -S qt5ct-kde qt6ct-kde
+```
 # Dolphin corrections
 
 **Installation**
@@ -73,11 +86,17 @@ sudo pacman -S archlinux-xdg-menu
 ```bash
 XDG_MENU_PREFIX=arch- kbuildsycoca6
 ```
-# Grim and Slurp(Print Screen)
+# Grim and Slurp (Print Screen)
 
 **Installation**
 ```bash
 sudo pacman -S grim slurp
+```
+# Clipboard History (Cliphist)
+
+**Installation**
+```bash
+sudo pacman -S wl-clipboard cliphist
 ```
 # SDDM
 ```bash
