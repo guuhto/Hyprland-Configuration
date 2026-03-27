@@ -130,3 +130,8 @@ window#waybar {
     color: #B8BCC6;
     background: rgba(30, 30, 35, 0.75);
 }
+
+#taskbar button {
+    padding: 4px;
+    margin: 2px;
+}

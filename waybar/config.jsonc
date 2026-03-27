@@ -1,43 +1,38 @@
 {
     "layer": "top",
-    "width": 1660,
+    "width": 1900,
     "margin-top": 10,
     "margin-bottom": 0,
 
     // Modules layout
-    "modules-left": ["custom/launcher","cpu","memory", "disk","custom/uptime"],
+    "modules-left": ["custom/launcher", "cpu", "memory", "disk", "custom/uptime"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["network","bluetooth","pulseaudio","battery","clock","custom/power"],
+    "modules-right": ["wlr/taskbar", "network", "bluetooth", "pulseaudio", "battery", "clock", "custom/power"],
 
     "custom/launcher": {
         "format": " ",
         "on-click": "rofi -show drun",
-        "on-click-right": "killall wofi"
+        "on-click-right": "killall rofi"
     },
-
     "cpu": {
         "interval": 15,
         "format": "<span color='#f7768e'> </span> {}%",
         "max-length": 10
     },
-
     "disk": {
         "format": "<span color='#e0af68'> </span> {used}",
         "interval": 1
     },
-
     "memory": {
         "interval": 30,
         "format": "<span color='#7dcfff'> </span> {used}GiB",
         "max-length": 10
     },
-
     "custom/uptime": {
         "format": "󱫋 {}",
         "interval": 60,
         "exec": "uptime -p | tr -d ',' | sed 's/up //g'",
-        "tooltip": false,
-        "class": "uptime-module"
+        "tooltip": false
     },
 
     "hyprland/workspaces": {
@@ -56,6 +51,17 @@
         }
     },
 
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-theme": "Nordzy",
+        "tooltip": true,
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": [],
+        "all-outputs": true,
+        "active-first": true,
+        "active-only": false
+    },
     "network": {
         "interval": 5,
         "tooltip": true,
@@ -64,21 +70,17 @@
         "format-ethernet": "<span color='#7dcfff'>󰈀</span> {ifname}",
         "format-disconnected": "<span color='#f7768e'>󰤭</span> Offline",
 
-        "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}\nSSID: {essid}\nSinal: {signalStrength}%"
+        "tooltip-format": "Interface: {ifname}\\nIP: {ipaddr}\\nSSID: {essid}\\nSinal: {signalStrength}%"
     },
-
     // Adapted from: https://github.com/cephi-sui/dotfiles/blob/eea29a853cd272594785487add91fe5cee8f9d15/.config/waybar/config#L167
     "bluetooth": {
         "format-on": "<span color='#9ece6a'>󰂯</span>",
         "format-off": "<span color='#f7768e'>󰂲</span>",
-        "format-connected": "<span color='#7dcfff'>󰂱</span> {device_alias}",
-    
+        "format-connected": "<span color='#7dcfff'>󰂱</span> {num_connections}",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-
         "on-click": "$HOME/.config/system_scripts/wofi-bluetooth.sh"
     },
-
     "pulseaudio": {
         "tooltip": false,
         "scroll-step": 5,
@@ -93,15 +95,6 @@
             ]
         }
     },
-
-    "backlight": {
-        "tooltip": false,
-        "format": " {}%",
-        "interval": 1,
-        "on-scroll-up": "light -A 5",
-        "on-scroll-down": "light -U 5"
-    },
-
     "battery": {
         "states": {
             "good": 95,
@@ -120,46 +113,43 @@
             "<span color='#9ece6a'></span>"
         ]
     },
-
-   "clock": {
+    "clock": {
+        "tooltip": true,
         "interval": 60,
         "format": "{:%H:%M}",
-        "tooltip": true,
-        "tooltip-format": "<big>{:%A, %d %B %Y}</big>",
-        "on-click": "gsimplecal"
+        "tooltip-format": "{:%Y-%m-%d}"
     },
-// Without gsimplecal
-//  "clock": {
-//     "tooltip": true,
-//     "interval": 60,
-//     "format": "{:%H:%M}",
-//     "tooltip-format": "{:%Y-%m-%d}"
-//   },
-
     "custom/power": {
         "format": "<span color='#f7768e'>⏻</span>",
         "on-click": "wlogout"
-    },
+    }
 
-    "custom/media": {
-        "interval": 30,
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 20,
-        "format-icons": {
-            "spotify": " ",
-            "default": " "
-        },
-        "escape": true,
-        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
-        "on-click": "playerctl play-pause"
-    },
+    // "backlight": {
+    //     "tooltip": false,
+    //     "format": " {}%",
+    //     "interval": 1,
+    //     "on-scroll-up": "light -A 5",
+    //     "on-scroll-down": "light -U 5"
+    // },
 
-    "custom/updates": {
-        "format": "{} Update(s)",
-        "exec": "checkupdates | wc -l",
-        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
-        "interval": 15,
-        "on-click": "alacritty -e paru -Syu && notify-send 'The system has been updated'"
-    }  
+    // "custom/media": {
+    //     "interval": 30,
+    //     "format": "{icon} {}",
+    //     "return-type": "json",
+    //     "max-length": 20,
+    //     "format-icons": {
+    //         "spotify": " ",
+    //         "default": " "
+    //     },
+    //     "escape": true,
+    //     "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+    //     "on-click": "playerctl play-pause"
+    // },
+    // "custom/updates": {
+    //     "format": "{} Update(s)",
+    //     "exec": "checkupdates | wc -l",
+    //     "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+    //     "interval": 15,
+    //     "on-click": "alacritty -e paru -Syu && notify-send 'The system has been updated'"
+    // }
 }
