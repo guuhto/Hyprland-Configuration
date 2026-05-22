@@ -72,10 +72,6 @@ sudo pacman -S swww
 ```bash
 yay -S mpvpaper
 ```
-**Installation**
-```bash
-yay -S qt5ct-kde qt6ct-kde
-```
 # Dolphin corrections
 
 **Installation**
